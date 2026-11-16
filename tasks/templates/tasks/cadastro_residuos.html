@@ -1,0 +1,178 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="login-container-principal">
+    <div class="login-sub-container-principal">
+        
+        <form class="p-4 form-cadastro-interno" method="POST" action="{% url 'cadastro_residuos' %}">
+            {% csrf_token %}
+            <h2 class="text-center mb-4">CADASTRAR RESÍDUO</h2>
+
+            <label class="form-label section-title mt-2">CLASSIFICAÇÃO QUÍMICA</label>
+            
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="campoEstadoFisico" class="form-label">ESTADO FÍSICO</label>
+                    <select name="estado_fisico_id" id="campoEstadoFisico" class="form-select" required>
+                        <option value="" disabled selected>Selecione...</option>
+                        {% for estado in estados_fisicos %}
+                            <option value="{{ estado.id }}">{{ estado.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="col-md-4">
+                    <label for="campoGrupoQuimico" class="form-label">GRUPO QUÍMICO</label>
+                    <select name="grupo_quimico_id" id="campoGrupoQuimico" class="form-select" disabled required>
+                        <option value="" disabled selected>Aguardando Estado Físico</option>
+                        {% for grupo in grupos_quimicos %}
+                            <option value="{{ grupo.id }}" data-estado="{{ grupo.estado_fisico.id }}" class="hidden">
+                                {{ grupo.nome }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="campoSubstancia" class="form-label">NOME DO RESÍDUO</label>
+                    <select name="substancia_id" id="campoSubstancia" class="form-select" disabled required>
+                        <option value="" disabled selected>Aguardando Grupo Químico</option>
+                        {% for sub in substancias %}
+                            <option value="{{ sub.id }}" data-grupo="{{ sub.grupo_quimico.id }}" class="hidden">
+                                {{ sub.nome }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <label for="campoClasseAmbiental" class="form-label">CLASSE AMBIENTAL</label>
+                    <select name="classe_ambiental_id" id="campoClasseAmbiental" class="form-select" required>
+                        <option value="" disabled selected>Selecione...</option>
+                        {% for classe in classes_ambientais %}
+                            <option value="{{ classe.id }}">{{ classe.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="col-md-4">
+                    <label for="campoPerigoPrincipal" class="form-label">PERIGO PRINCIPAL</label>
+                    <select name="perigo_principal_id" id="campoPerigoPrincipal" class="form-select" required>
+                        <option value="" disabled selected>Selecione...</option>
+                        {% for perigo in perigos_principais %}
+                            <option value="{{ perigo.id }}">{{ perigo.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="campoAcondicionamento" class="form-label">ACONDICIONAMENTO SUGERIDO</label>
+                    <select name="acondicionamento_id" id="campoAcondicionamento" class="form-select" required>
+                        <option value="" disabled selected>Selecione...</option>
+                        {% for acond in acondicionamentos %}
+                            <option value="{{ acond.id }}">{{ acond.descricao }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+            <label class="form-label section-title">DADOS DA GERAÇÃO E ARMAZENAMENTO</label>
+
+            <div class="row mb-3 align-items-end mt-2">
+                <div class="col-md-2">
+                    <label for="campoVolume" class="form-label">VOLUME</label>
+                    <input type="text" name="volume" class="form-control" id="campoVolume" placeholder="Ex.: 0.5" required>
+                </div>
+                <div class="col-auto" style="padding-bottom: 8px;">
+                    <label class="form-label">L</label>
+                </div>
+                
+                <div class="col-md-3">
+                    <label for="campoFrasco" class="form-label">FRASCO</label>
+                    <select name="frasco_id" id="campoFrasco" class="form-select" required>
+                        {% for frasco in frascos %}
+                            <option value="{{ frasco.id }}">Frasco {{ frasco.num }} (Lote: {{ frasco.lote }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <a href="{% url 'frascos_cadastrados' %}" class="btn botao-visualizar rounded-5">Visualizar Frascos</a>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="campoOrigem" class="form-label">ORIGEM (LABORATÓRIO)</label>
+                    <input type="text" name="origem" class="form-control" id="campoOrigem" placeholder="Ex.: Laboratório de Química A" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="campoCurso" class="form-label">CURSO VINCULADO</label>
+                    <select name="curso_id" id="campoCurso" class="form-select" required>
+                        {% for curso in cursos %}
+                            <option value="{{ curso.id }}">{{ curso.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="campoExperimento" class="form-label">EXPERIMENTO REALIZADO</label>
+                    <input type="text" name="experimento" class="form-control" id="campoExperimento" placeholder="Ex.: Titulação ácido-base">
+                </div>
+                <div class="col-md-6">
+                    <label for="campoStatus" class="form-label">STATUS/SITUAÇÃO DO RESÍDUO</label>
+                    <input type="text" name="situacao" class="form-control" id="campoStatus" placeholder="Ex.: Aguardando Descarte" required>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="campoLocalArmazenamento" class="form-label">LOCAL DE ARMAZENAMENTO</label>
+                <select name="local_id" id="campoLocalArmazenamento" class="form-select" required>
+                    {% for local in locais %}
+                        <option value="{{ local.id }}">{{ local.local }} ({{ local.tipo }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <hr class="mb-4">
+
+            <label class="form-label section-title">NÍVEIS DE RISCO (0 a 4)</label>
+            <div class="row mb-4 mt-2">
+                <div class="col-md-2">
+                    <label class="form-label">GERAL</label>
+                    <input type="number" name="nivel_risco" class="form-control" min="0" max="4" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">SAÚDE</label>
+                    <input type="number" name="risco_saude" class="form-control" min="0" max="4" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">INFLAMAB.</label>
+                    <input type="number" name="inflamabilidade" class="form-control" min="0" max="4" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">REATIVID.</label>
+                    <input type="number" name="reatividade" class="form-control" min="0" max="4" value="0">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">RISCOS ESPECÍFICOS</label>
+                    <input type="text" name="riscos_especificos" class="form-control" placeholder="Ex.: OXI, COR, W">
+                </div>
+            </div>
+
+            <div class="form-buttons mt-5">
+                <button type="reset" class="btn botao-limpar-campos">LIMPAR CAMPOS</button>
+                <button type="submit" class="btn botao-cadastrar">CADASTRAR RESÍDUO</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'tasks/js/filtros-cadastro-residuo.js' %}"></script>
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+
+    <h2 class="fw-bold mb-4" style="color: #555;">DETALHES DO RELATÓRIO:</h2>
+
+    <div class="relatorio-lista">
+
+        <div class="relatorio-item">
+            <h5 class="fw-bold mb-3">NOME DO RESÍDUO</h5>
+            <div class="d-flex flex-wrap">
+                <div class="coluna-info">
+                    <p><strong>Quantidade:</strong> X g(ou ml)</p>
+                    <p><strong>Local:</strong> XXXXXXXX</p>
+                    <p><strong>Instituição:</strong> XXXXXXXX</p>
+                    <p>*** Classificação ***</p>
+                    <p><strong>Frasco:</strong> (número de id)</p>
+                </div>
+                <div class="coluna-info">
+                    <p><strong>Data de cadastro:</strong> DD/MM/AAAA</p>
+                    <p><strong>Data de atualização:</strong> DD/MM/AAAA</p>
+                    <p><strong>Status:</strong> XXXXXXXX</p>
+                    <p><strong>Responsável técnico:</strong> XXXXXXXX</p>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-2">
+        <p class="text-muted mb-0">Gerado às HH:mm de DD/MM/AAAA.</p>
+        <div class="d-flex gap-2">
+            <a href="{% url 'relatorios' %}" class="btn btn-relatorio">VOLTAR</a>
+            <a href="#" class="btn btn-relatorio">IMPRIMIR</a>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

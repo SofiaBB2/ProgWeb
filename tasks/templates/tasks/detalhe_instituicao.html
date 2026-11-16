@@ -1,0 +1,50 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="login-container-principal">
+    <div class="login-sub-container-principal container-largo p-5">
+        <h2 class="text-start mb-5 fw-bold">DETALHES DA INSTITUIÇÃO:</h2>
+        <div class="detalhes-conteudo" style="font-size: 1.1rem; line-height: 1.8;">
+            <p><strong>Nome da Instituição:</strong> {{ instituicao.nome }}</p>
+            <p><strong>Endereço:</strong> {{ instituicao.endereco }}</p>
+            <p><strong>Capacidade:</strong> {{ instituicao.id_armazenamento_instituicao.volume_total }}
+                 (Volume atual: {{ instituicao.id_armazenamento_instituicao.volume_atual }})</p>
+            <h5 class="mt-4"><strong>Cursos:</strong></h5>
+            <ul>
+                <!-- CURSOS -->
+                {% for curso in instituicao.cursos.all %}
+                    <li>{{ curso.nome }} ({{ curso.nivel }})</li>
+                {% empty %}
+                    <li>Nenhum curso vinculado a esta instituição.</li>
+                {% endfor %}
+            </ul>
+
+            <h5 class="mt-4"><strong>Técnicos cadastrados:</strong></h5>
+            <ul>
+                <!-- TECNICOS -->
+                {% for tecnico in tecnicos %}
+                    <li>{{ tecnico.usuario.nome }} - {{ tecnico.especializacao }}</li>
+                {% empty %}
+                    <li>Nenhum técnico cadastrado nesta instituição.</li>
+                {% endfor %}
+            </ul>
+
+            <div class="mt-5">
+                <h4 class="fw-bold">Contato</h4>
+                <!-- TELEFONE E EMAIL (AINDA NAO TEM ESSES CAMPOS NO BD) -->
+                <p class="mb-1"><strong>Email:</strong> campus@gmail.com</p>
+                <p><strong>Telefone:</strong> 44 09999 9999</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+            <a href="{% url 'instituicoes' %}" class="btn botao-cadastrar rounded-pill px-4">
+                VOLTAR
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

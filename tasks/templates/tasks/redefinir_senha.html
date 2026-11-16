@@ -1,0 +1,21 @@
+{% extends "tasks/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="login-container-principal">
+    <div class="rounded-5 login-sub-container-principal">
+        <form class="p-5" method="post">
+            {% csrf_token %}
+            <h2 class="text-center mb-4">DEFINIR NOVA SENHA</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="status">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {{ form|crispy }}
+            <button type="submit" class="btn rounded-5 botao-entrar">Salvar nova senha</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

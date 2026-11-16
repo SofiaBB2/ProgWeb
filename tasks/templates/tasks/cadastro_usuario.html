@@ -1,0 +1,86 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="login-container-principal">
+
+    <div class="login-sub-container-principal">
+        
+      <form class="p-4 form-cadastro-interno" method="POST" action="{% url 'cadastro_usuario' %}" enctype="multipart/form-data">
+    {% csrf_token %} 
+    <h2 class="text-center mb-4">CADASTRAR USUÁRIO</h2>
+
+    <div class="mb-3">
+        <label for="campoNome" class="form-label">NOME</label>
+        <input type="text" class="form-control" id="campoNome" name="nome">
+    </div>
+
+    <div class="mb-3">
+        <label for="campoFoto" class="form-label">FOTO DE PERFIL</label>
+        <input type="file" class="form-control" id="campoFoto" name="foto">
+    </div>
+
+    <div class="row mb-3">
+   <div class="col-md-6">
+    <label for="campoCPF" class="form-label">CPF</label>
+    <input type="text" class="form-control" id="campoCPF" name="cpf" maxlength="14" placeholder="000.000.000-00">
+
+    <div id="aviso-cpf" class="text-danger mt-1 d-none" style="font-size: 0.85em;">
+        CPF inválido! Verifique os números digitados.
+    </div>
+</div>
+        <div class="col-md-6">
+            <label for="campoFormacao" class="form-label">FORMAÇÃO</label>
+            <input type="text" class="form-control" id="campoFormacao" name="formacao">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="campoRegistro" class="form-label">REGISTRO PROFISSIONAL</label>
+            <input type="text" class="form-control" id="campoRegistro" name="registro_profissional">
+        </div>
+        <div class="col-md-6">
+            <label for="campoStatus" class="form-label">STATUS</label>
+            <input type="text" class="form-control" id="campoStatus" name="status" placeholder="Ex.: Ativo">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="campoEmail" class="form-label">EMAIL</label>
+        <input type="email" class="form-control" id="campoEmail" name="email">
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <label for="campoSenha" class="form-label">SENHA</label>
+            <input type="password" class="form-control" id="senha" name="senha">
+        </div>
+        <div class="col-md-6">
+            <label for="campoConfirmaSenha" class="form-label">CONFIRMAÇÃO DE SENHA</label>
+            <input type="password" class="form-control" id="confirma_senha">
+            <div id="mensagem_erro_senha" class="mt-1"></div>
+        </div>
+    </div>
+
+    <div class="form-buttons">
+        <button type="reset" class="btn botao-limpar-campos">LIMPAR CAMPOS</button>
+        <button type="submit" class="btn botao-cadastrar" id="botao_cadastrar">CADASTRAR</button>
+    </div>
+</form>
+
+    <a href="{% url 'login' %}" class="btn mt-4 botao-fazer-login">
+        Já possui uma conta? <br> Faça seu login.
+    </a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>
+    $(function () {
+        $('#campoCPF').mask('000.000.000-00');
+    });
+</script>
+<script src="{% static 'tasks/js/validacao.js' %}"></script>
+
+{% endblock content %}

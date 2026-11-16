@@ -1,0 +1,915 @@
+/* ===== ESTILOS GERAIS DA NAVBAR ===== */
+.navbar.navbar-custom {
+    background-color: #07631f; 
+    position: relative;
+}
+
+.navbar.navbar-custom .nav-link,
+.navbar.navbar-custom .navbar-brand {
+    color: #ffffff;
+}
+
+/* ===== ESTILOS DO LOGO 'RESIDUOLAB' ===== */
+.navbar.navbar-custom .navbar-brand {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navbar.navbar-custom .navbar-brand::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #dc3545;
+}
+
+/* ===== ESTILOS DO CONTAINER DE LOGIN/CADASTRO (NA NAVBAR) ===== */
+.login-container {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.cadastro-link {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.9rem;
+    align-self: flex-start;
+    margin-top: 20px;
+}
+
+.login-icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.login-icon-link img {
+    width: 75px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.login-icon-link span {
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* ===== ESTILOS DO RODAPÉ ===== */
+.footer-custom {
+    background-color: #07611f;
+    padding: 15px 0;
+}
+
+.footer-custom .footer-logo,
+.footer-custom .footer-contato {
+    width: 200px;
+    display: flex;
+}
+
+.footer-custom .footer-contato {
+    justify-content: flex-end;
+}
+
+.footer-custom .footer-logo {
+    height: 100px;
+    width: auto;
+    margin-right: 15px;
+}
+
+.footer-contato-texto {
+    color: #ffffff;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-contato-icone {
+    height: 30px;
+    width: auto;
+}
+
+.footer-contato {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.footer-contato > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ================================================================= */
+/* ESTILOS PARA PÁGINAS DE FORMULÁRIO (LAYOUT COMUM LOGIN/CADASTRO) */
+/* ================================================================= */
+
+.login-container-principal {
+    background-color: #ffffff;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5rem 0;
+}
+
+
+.login-sub-container-principal {
+    background-color: #e0e0e0;
+    width: 90%;
+    max-width: 750px;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+/* ================================================= */
+/* ===== ESTILOS ESPECÍFICOS DA PÁGINA DE LOGIN ===== */
+/* ================================================= */
+
+.botao-esqueceu-senha {
+    background-color: #5c5c5c;
+    padding: 5px 10px;
+    border: none;
+    color: white;
+}
+
+.botao-limpar {
+    background-color: #5c5c5c;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.botao-entrar {
+    position: absolute;
+    background-color: #458729;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 20px 50px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    border-radius: 25px;
+}
+
+/* ==================================================== */
+/* ===== ESTILOS ESPECÍFICOS DA PÁGINA DE CADASTRO ===== */
+/* ==================================================== */
+
+
+.form-cadastro-interno .form-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
+.form-cadastro-interno .form-control,
+.form-cadastro-interno .form-select {
+    background-color: #fff;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.botao-limpar-campos {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+
+.botao-cadastrar {
+    background-color: #458729;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.botao-cadastrar:hover {
+    background-color: #a6fe80;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.botao-fazer-login {
+    background-color: #458729;
+    color: white;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 300px;
+    text-decoration: none;
+}
+
+/* ========================================================== */
+/* ===== ESTILOS ADICIONAIS PARA CADASTRO DE RESÍDUO ===== */
+/* ========================================================== */
+
+button.btn.botao-visualizar {
+    background-color: #458729 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 6px 9px;
+}
+
+button.btn.botao-visualizar:hover {
+    background-color: #3a7022 !important;
+}
+
+.form-cadastro-interno .section-title { 
+    font-size: 18px;
+    color: #2e2d2d;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+/* ===== ESTILOS PÁGINA DE LISTAGEM DE RESÍDUOS ===== */
+
+.login-sub-container-principal.container-largo {
+    max-width: 4000px;
+    
+}
+.botao-filtrar, .botao-ordenar {
+    background-color: #dc3545;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    padding: 6px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+}
+
+.icon-btn {
+    width: 18px;
+    height: 18px;
+}
+
+
+.barra-pesquisa {
+    border: 2px solid #458729;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: white;
+    max-width: 600px;
+}
+
+.lupa-bg {
+    background-color: #458729;
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+.icon-lupa {
+    width: 30px;
+    height: 30px;
+    
+}
+
+.campo-pesquisa {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.campo-pesquisa:focus {
+    outline: none !important;
+}
+
+.botao-limpar-pesquisa {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    padding-right: 1rem;
+    color: #333;
+    z-index: 10;
+}
+
+.texto-resultados {
+    color: #777;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.lista-residuos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-residuo {
+    background-color: #9c9c9c;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+}
+
+.codigo-residuo {
+    background-color: #458729;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    padding: 0.8rem;
+    min-width: 80px;
+    line-height: 1.1;
+}
+
+.botao-detalhar-residuo {
+    position: absolute;
+    bottom:2.5rem;
+    right: 2.5rem;
+    display: flex;
+    gap: 10px;
+    text-decoration: none !important;
+}
+
+.info-residuo {
+    flex: 1;
+}
+
+.info-residuo p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.botao-filtrar:hover,
+.botao-ordenar:hover {
+    background-color: #faa6a6;
+}
+
+/* ===== BOTÕES NOS CARDS ===== */
+
+.item-residuo {
+    border: 3px solid #458729;
+    border-radius: 15px;
+    position: relative;
+    background-color: #f5f5f5;
+    padding-bottom: 3.5rem !important;
+}
+.item-residuo h5 {
+    color: #458729;
+}
+.botoes-card {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 10px;
+}
+
+.botao-visualizar {
+    background-color: #458729 !important;
+    color: white !important;
+    font-weight: bold;
+    border: none !important;
+    border-radius: 20px;
+    padding: 6px 14px;
+    transition: background-color 0.3s ease;
+}
+
+.botao-visualizar:hover {
+    background-color: #3a7022 !important;
+}
+
+/* ===== ESTILOS PARA O DROPDOWN DE FILTRO ===== */
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 230px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /* Aumente o z-index para garantir que fique sobre os cards */
+    z-index: 1000; 
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    /* Evita que o texto herde alinhamentos do botão */
+    text-align: left;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    border-radius: 4px;
+}
+
+.dropdown-content a:hover {
+    background-color: #e9e9e9;
+}
+.dropdown-content.show {
+    display: block !important;
+}   
+
+.modal-body {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.export-modal-content {
+    background-color: rgba(248, 252, 255, 0.85);
+    border-radius: 10px;
+    border: none;
+    box-shadow: none;
+    width: auto;
+    margin: 0 auto;
+}
+
+.export-option-btn {
+    background-color: #5a6268;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #c5c5c5;
+    padding: 8px 25px;
+    border-radius: 5px;
+}
+
+.export-option-btn:hover {
+    background-color: #494f54;
+    color: white;
+}
+
+/* ============================================= */
+/* ===== NOVO ESTILO PARA LISTA DE FRASCOS ===== */
+/* ============================================= */
+
+.item-frascos-novo {
+    display: flex;
+    align-items: center;
+    background-color: #d8d5d5;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+
+    position: relative;
+    padding: 1rem 1rem 1rem 120px;
+    min-height: 90px;
+}
+
+.codigo-frascos-novo {
+    background-color: #458729;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-frascos-novo {
+    flex-grow: 1;
+}
+
+.info-frascos-novo p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.botoes-card-novo {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.botoes-card-novo .btn {
+    background-color: #c5c5c5;
+    padding: 5px 8px;
+}
+
+.botoes-card-novo .btn img {
+    width: 20px;
+    height: 20px;
+}
+
+/* ============================================= */
+/* ===== ESTILOS PARA TELA DE SUCESSO       ===== */
+/* ============================================= */
+
+.caixa-sucesso {
+    background-color: #c8e6c9;
+    color: #388e3c;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #a5d6a7;
+}
+
+.caixa-sucesso h2 {
+    color: #388e3c;
+    font-size: 1.5rem;
+}
+
+/* ======================================================= */
+/* ===== ESTILOS PÁGINA DE DETALHES                      ===== */
+/* ======================================================= */
+
+.detalhes-container {
+    padding-bottom: 7rem !important; 
+    position: relative; 
+    font-family: sans-serif; 
+    background-color: #f0f0f0; 
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+
+.info-detalhes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-detalhes-grid .texto-display {
+    color: #555555;
+    font-size: 1.05rem; 
+}
+
+.info-detalhes-grid strong {
+    color: #4f4f4f;
+}
+
+.info-linha-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 40px;
+    color: #333333;
+}
+
+.info-linha-flex.align-items-center {
+    align-items: center;
+}
+
+.classificacao-detalhe .sub-item {
+    padding-left: 20px;
+}
+
+.botao-visualizar-frascos {
+    background-color: #458729;
+    color: white;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.botao-visualizar-frascos:hover {
+    background-color: #3a7022;
+    color: white;
+}
+
+.botoes-acao-detalhes {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.botao-atualizar, .botao-excluir {
+    color: white !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 25px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    min-width: 120px;
+}
+
+.botao-atualizar {
+    background-color: #458729;
+}
+
+.botao-atualizar:hover {
+    background-color: #3a7022;
+}
+
+.botao-excluir {
+    background-color: #dc3545;
+}
+
+.botao-excluir:hover {
+    background-color: #c82333;
+}
+
+
+/* Classe de utilidade para esconder/mostrar elementos */
+
+.hidden {
+    display: none !important;
+}
+
+.botao-editar-info {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px;
+
+}
+
+.botao-editar-info img {
+    width: 110px;
+    height: 35px;
+    transition: opacity 0.3s ease;
+}
+
+.botao-editar-info:hover img {
+    opacity: 1;
+}
+
+.botoes-acao-detalhes {
+    width: 120px;
+}
+
+.botao-salvar, .botao-cancelar {
+    color: white !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 25px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.botao-salvar {
+    background-color: #28a745; /* Um verde um pouco diferente para "Salvar" */
+}
+.botao-salvar:hover {
+    background-color: #218838;
+}
+
+.botao-cancelar {
+    background-color: #6c757d; /* Cinza */
+}
+.botao-cancelar:hover {
+    background-color: #5a6268;
+}
+
+/* Garante que a classe .info-linha-flex sempre alinhe os itens */
+.info-linha-flex {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    width: 100%;
+}
+
+/* Estilos para os campos de edição */
+.input-edicao {
+    font-size: 1rem;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+/* Estilo para a div que contém o label e o campo */
+.campo-editavel {
+    display: flex;
+    align-items: baseline;
+    gap: 8px; /* Espaço entre o "Nome:" e o valor */
+}
+
+/* ======================================================= */
+/* ===== ESTILOS PÁGINA DE LISTAGEM DE USUÁRIOS       ===== */
+/* ======================================================= */
+
+.lista-usuarios {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Espaço entre os cards */
+}
+
+.card-usuario {
+    background-color: #f0f0f0; /* Fundo cinza claro do card */
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border: 1px solid #ddd;
+}
+
+.foto-usuario {
+    background-color: #458729; /* Fundo verde para a foto */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+    border-radius: 15px; /* Bordas arredondadas */
+    width: 110px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Impede que o container da foto encolha */
+}
+
+.info-usuario {
+    flex-grow: 1; /* Faz esta div ocupar o espaço restante */
+}
+
+.info-usuario h5 {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.info-usuario p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.info-usuario p strong {
+    color: #333;
+}
+
+.acoes-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin-left: auto;
+    align-self: stretch;
+    justify-content: flex-end;
+}
+
+.botao-detalhar {
+    background-color: #458729;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.botao-detalhar:hover {
+    background-color: #3a7022;
+    color: white;
+}
+
+.icone-editar-nome img,
+.icone-editar-card img {
+    width: 110px;
+    height: 35px;
+    transition: opacity 0.3s ease;
+}
+
+.titulo-detalhes {
+    color: #444444; /* cinza escuro */
+    font-weight: 700;
+    font-family: sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+
+    /* ======================================= */
+/* ===== ESTILOS DA TELA DE DASHBOARD ===== */
+/* ======================================= */
+
+.btn-dashboard {
+    background-color: #458729; /* Mesmo verde dos outros botões */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    
+    border-radius: 50px; /* Deixa o botão totalmente arredondado (pílula) */
+    padding: 1rem 2rem;  /* Espaçamento interno para um botão maior */
+    min-width: 260px;    /* Largura mínima para manter a consistência */
+    text-align: center;
+    line-height: 1.4;    /* Melhora o espaçamento entre as linhas */
+    
+    transition: all 0.3s ease; /* Efeito suave para o hover */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.btn-dashboard:hover {
+    background-color: #3a7022; /* Tom de verde mais escuro ao passar o mouse */
+    color: white;
+    transform: translateY(-3px); /* Efeito de "levantar" o botão */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* ======================================================= */
+/* ===== ESTILOS PÁGINA DE DETALHES DO RELATÓRIO     ===== */
+/* ======================================================= */
+
+.relatorio-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaçamento entre os cards de resíduo */
+}
+
+.relatorio-item {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    border: 3px solid #dcdcdc; /* Borda cinza padrão */
+    color: #333; /* Cor do texto padrão dentro do item */
+}
+
+/* Estilo para o item destacado com a borda azul */
+.relatorio-item.destaque {
+    border-color: #0d6efd; /* Cor azul para destaque */
+}
+
+.relatorio-item h5 {
+    color: #000;
+}
+
+.coluna-info {
+    flex: 1; /* Faz as duas colunas dividirem o espaço igualmente */
+    min-width: 300px; /* Garante que o conteúdo não fique espremido */
+}
+
+.coluna-info p {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.coluna-info p strong {
+    color: #000;
+}
+
+.btn-relatorio {
+    background-color: #458729;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    text-transform: capitalize;
+    border-radius: 50px;
+    padding: 0.6rem 1.8rem;
+    
+    transition: background-color 0.3s ease;
+}
+
+.btn-relatorio:hover {
+    background-color: #3a7022;
+    color: white;
+}

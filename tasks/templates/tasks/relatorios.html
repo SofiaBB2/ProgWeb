@@ -1,0 +1,103 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="login-container-principal">
+
+    <div class="login-sub-container-principal container-largo">
+
+        <div class="d-flex justify-content-start gap-3 mb-4">
+            <div class="dropdown-container">
+                <button class="botao-filtrar">
+                    <img src="{% static 'tasks/iconFilter.png' %}" alt="Filtrar" class="icon-btn">
+                    FILTRAR
+                </button>
+                <div id="dropdown-filtro" class="dropdown-content">
+                    <h5>Filtrar Por:</h5>
+                    <a href="#">Data de Criação</a>
+                    <a href="#">Tipo de Resíduo</a>
+                    <a href="#">Laboratório de Origem</a>
+                    <a href="#">Status</a>
+                </div>
+            </div>
+            
+            <div class="dropdown-container">
+                <button class="botao-ordenar">
+                    <img src="{% static 'tasks/iconTransfer.png' %}" alt="Ordenar" class="icon-btn">
+                    ORDENAR
+                </button>
+                <div id="dropdown-ordenar" class="dropdown-content">
+                    <h5>Ordenar Por:</h5>
+                    <a href="#">Mais Recentes</a>
+                    <a href="#">Mais Antigos</a>
+                    <a href="#">Nome do Resíduo (A-Z)</a>
+                    <a href="#">Nome do Resíduo (Z-A)</a>
+                </div>
+            </div>
+        </div>
+        
+        <p class="texto-resultados">RESULTADOS ENCONTRADOS:</p>
+        
+        <div class="lista-residuos">
+            <div class="item-residuo bg-light rounded-3 p-3" style="border-width: 3px !important;">
+                <div class="info-residuo">
+                    <h5 class="fw-bold ">ClearSolv-X90</h5>
+                    <p>
+                        O ClearSolv-X90 é um solvente industrial de alta performance desenvolvido para aplicações em limpeza pesada,
+                        desengraxe de superfícies metálicas e preparação de materiais para processos de pintura ou soldagem. 
+                        Sua fórmula inovadora à base de hidrocarbonetos oxigenados proporciona uma evaporação controlada, garantindo
+                        máxima eficiência na remoção de óleos, graxas, resinas e resíduos orgânicos sem deixar resíduos.
+                    </p>
+                </div>
+                <div class="botoes-card">
+                    
+                    <button class="btn botao-visualizar d-flex align-items-center gap-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#detailsModal"
+                            data-nome="ClearSolv-X90"
+                            data-descricao="O ClearSolv-X90 é um solvente industrial de alta performance..."
+                            data-tipo="Solvente Industrial"
+                            data-criado-em="07/10/2025">
+
+                        <img src="{% static 'tasks/show.png' %}" alt="Ver" style="width: 33px; height: 25px;">
+                    </button>
+                    
+                    <a href="{% url 'detalhesRelatorio' %}" class="btn botao-visualizar d-flex align-items-center gap-2">
+                        DETALHES
+                    </a>
+                    <button class="btn botao-visualizar d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#exportModal">
+                        EXPORTAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content export-modal-content">
+            <div class="modal-body">
+                <a href="{% url 'dowload_iniciado' %}" class="btn export-option-btn">EXCEL</a>
+                <a href="{% url 'dowload_iniciado' %}" class="btn export-option-btn">PDF</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Detalhes do Resíduo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="detailsModalBody">
+                <p>Carregando...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'tasks/filtros.js' %}"></script>
+
+{% endblock content %}

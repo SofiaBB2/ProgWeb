@@ -1,0 +1,65 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block extra_head %}
+<link href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="login-container-principal">
+
+    <div class="login-sub-container-principal container-largo">
+
+        <h2 class="text-start mb-4 fw-bold">INSTITUIÇÕES CADASTRADAS:</h2>
+
+        {% if instituicoes_cadastradas %}
+        <div class="table-responsive">
+            <table id="instituicoes-table" class="table table-striped table-hover align-middle w-100">
+                <thead>
+                    <tr>
+                        <th>Instituição</th>
+                        <th>Endereço</th>
+                        <th>Capacidade</th>
+                        <th>Volume atual</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instituicao in instituicoes_cadastradas %}
+                    <tr>
+                        <td>{{ instituicao.nome }}</td>
+                        <td>{{ instituicao.endereco }}</td>
+                        <td>{{ instituicao.id_armazenamento_instituicao.volume_total }}</td>
+                        <td>{{ instituicao.id_armazenamento_instituicao.volume_atual }}</td>
+                        <td>
+                            <a href="{% url 'detalhe_instituicao' instituicao.id %}" class="btn btn-sm btn-outline-primary">Detalhar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-muted">Nenhuma instituição cadastrada no sistema no momento.</p>
+        {% endif %}
+
+{% if instituicoes_cadastradas %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(function () {
+        new DataTable('#instituicoes-table', {
+            pageLength: 10,
+            lengthMenu: [5, 10, 25, 50],
+            order: [[0, 'asc']],
+            columnDefs: [{ targets: 4, orderable: false, searchable: false }],
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/pt-BR.json'
+            }
+        });
+    });
+</script>
+{% endif %}
+
+{% endblock content %}

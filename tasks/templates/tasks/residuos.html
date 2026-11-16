@@ -1,0 +1,61 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="login-container-principal">
+
+    <div class="login-sub-container-principal container-largo">
+
+        <h2 class="text-start mb-4">RESÍDUOS CADASTRADOS:</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="status">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% include 'tasks/form-filter.html' %}
+
+        <p class="texto-resultados">RESULTADOS ENCONTRADOS:</p>
+
+        <div class="lista-residuos">
+           
+            {% for item in residuos_cadastrados %}
+            <div class="item-residuo">
+
+                <div class="codigo-residuo">
+                    <!-- Usa o número do frasco como código 
+                OBS: PRECISA TER UM N DE ETIQUETA PARA CADASTRAR AQUI!!
+                    -->
+                    FRASCO<br>1
+                </div>
+
+                <div class="info-residuo">
+                    <p><strong>Resíduo:</strong> {{ item.id_gerado.id_residuo.substancia.nome }}</p>
+                    <p><strong>Quantidade:</strong> {{ item.id_gerado.quant }} {{ item.id_gerado.unidade_medida }}</p>
+                    <p><strong>Local:</strong> {{ item.local.local }}</p>
+                </div>
+
+                <div class="info-residuo">
+                    <p><strong>Classificação:</strong> {{ item.id_gerado.id_residuo.classe_ambiental.nome }}</p>
+                    <p><strong>Status:</strong> {{ item.situacao }}</p>
+                </div>
+
+                <div class="botoes-card">
+
+                   <a href="{% url 'detalhe_residuo' item.id %}" class="botao-visualizar" 
+                   style="text-decoration: none;">DETALHAR</a> <!---- passo meu ID aqui>  -->
+                </div>
+            </div>
+
+            {% empty %}
+            <div style="text-align: center; width: 100%; padding: 20px;">
+                <p>Nenhum resíduo cadastrado no sistema no momento.</p>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        {% include 'tasks/paginacao.html' %}
+
+        {% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="login-container-principal">
+    <div class="d-flex flex-column align-items-center">
+
+        <div class="caixa-sucesso p-5 rounded-4 text-center">
+            <h2 class="fw-bold">DOWNLOAD INICIADO</h2>
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'relatorios' %}" class="btn botao-cadastrar rounded-pill px-4">VOLTAR</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,114 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="login-container-principal">
+    <div class="login-sub-container-principal detalhes-container">
+        
+        <h2 class="titulo-detalhes mb-4">MEU PERFIL:</h2>
+
+        <form method="POST" action="{% url 'detalheUsuario' %}">
+            {% csrf_token %} <div class="info-detalhes-grid">
+
+                <div class="info-linha-flex">
+                    <div class="campo-editavel">
+                        <strong>Nome Completo:</strong>
+                        <span class="texto-display">{{ usuario.nome }}</span>
+                        <input type="text" name="nome" value="{{ usuario.nome }}" class="input-edicao hidden">
+                    </div>
+                    <button type="button" class="botao-editar-info hidden"><img src="{% static 'tasks/pencil.png' %}" alt="Editar"></button>
+                </div>
+
+                <div class="info-linha-flex">
+                    <div class="campo-editavel">
+                        <strong>CPF:</strong>
+                        <span class="texto-display">{{ usuario.cpf }}</span>
+                        <input type="text" name="cpf" value="{{ usuario.cpf }}" class="input-edicao hidden">
+                    </div>
+                    <button type="button" class="botao-editar-info hidden"><img src="{% static 'tasks/pencil.png' %}" alt="Editar"></button>
+                </div>
+
+                <div class="info-linha-flex">
+                    <div class="campo-editavel">
+                        <strong>Email:</strong>
+                        <span class="texto-display">{{ usuario.email }}</span>
+                        <input type="email" name="email" value="{{ usuario.email }}" class="input-edicao hidden">
+                    </div>
+                    <button type="button" class="botao-editar-info hidden"><img src="{% static 'tasks/pencil.png' %}" alt="Editar"></button>
+                </div>
+
+                <div class="info-linha-flex">
+                    <div class="campo-editavel">
+                        <strong>Registro Profissional:</strong>
+                        <span class="texto-display">{{ usuario.registro_profissional }}</span>
+                        <input type="text" name="registro_profissional" value="{{ usuario.registro_profissional }}" class="input-edicao hidden">
+                    </div>
+                    <button type="button" class="botao-editar-info hidden"><img src="{% static 'tasks/pencil.png' %}" alt="Editar"></button>
+                </div>
+
+                <div class="info-linha-flex">
+                    <div class="campo-editavel">
+                        <strong>Formação:</strong>
+                        <span class="texto-display">{{ usuario.formacao }}</span>
+                        <input type="text" name="formacao" value="{{ usuario.formacao }}" class="input-edicao hidden">
+                    </div>
+                    <button type="button" class="botao-editar-info hidden"><img src="{% static 'tasks/pencil.png' %}" alt="Editar"></button>
+                </div>
+
+                <div class="info-linha-flex">
+                    <div class="campo-editavel">
+                        <strong>Status:</strong>
+                        <span class="texto-display">{{ usuario.status }}</span>
+                        <input type="text" name="status" value="{{ usuario.status }}" class="input-edicao hidden">
+                    </div>
+                    <button type="button" class="botao-editar-info hidden"><img src="{% static 'tasks/pencil.png' %}" alt="Editar"></button>
+                </div>
+                
+            </div>
+
+            <div class="botoes-acao-detalhes">
+                <a href="#" id="btn-toggle-edit" class="botao-atualizar">EDITAR</a>
+                
+                <button type="submit" id="btn-save" class="botao-salvar hidden border-0" style="cursor: pointer;">SALVAR</button>
+                
+                <a href="#" id="btn-cancel" class="botao-cancelar hidden">CANCELAR</a>
+               <button type="button" id="btn-delete" class="botao-excluir">EXCLUIR CONTA</button>
+            </div>
+            
+        </form> </div>
+</div>
+
+<form id="form-excluir-conta" method="post" action="{% url 'deletar_usuario' %}" class="d-none">
+    {% csrf_token %}
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+        <div id="dados-alerta" class="d-none" data-tipo="{{ message.tags }}" data-texto="{{ message }}"></div>
+    {% endfor %}
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootbox@6.0.4/dist/bootbox.min.js"></script>
+<script src="{% static 'tasks/js/pop-up-sucess.js' %}"></script>
+<script src="{% static 'tasks/js/habilitarEdicao.js' %}?v=1"></script>
+<script>
+    document.getElementById('btn-delete').addEventListener('click', function () {
+        bootbox.confirm({
+            title: 'Excluir conta',
+            message: 'Essa ação é irreversível. Deseja excluir sua conta?',
+            buttons: {
+                confirm: { label: 'Excluir', className: 'btn-danger' },
+                cancel: { label: 'Cancelar', className: 'btn-secondary' }
+            },
+            callback: function (confirmado) {
+                if (confirmado) {
+                    document.getElementById('form-excluir-conta').submit();
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock content %}

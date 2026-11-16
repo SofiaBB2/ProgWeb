@@ -1,0 +1,37 @@
+runtime: python313
+entrypoint: gunicorn --bind :$PORT --workers 2 --threads 4 setup.wsgi:application
+instance_class: F1
+automatic_scaling:
+  min_instances: 0
+  max_instances: 3
+
+handlers:
+  - url: /static
+    static_dir: tasks/static
+    secure: always
+  - url: /.*
+    script: auto
+    secure: always
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: setup.settings
+  DJANGO_DEBUG: "false"
+  DJANGO_ALLOWED_HOSTS: ".appspot.com"
+  GOOGLE_CLOUD_PROJECT: "REPLACE_WITH_GCP_PROJECT_ID"
+  INSTANCE_CONNECTION_NAME: "REPLACE_WITH_PROJECT:REGION:INSTANCE"
+  DB_NAME: "REPLACE_WITH_DATABASE_NAME"
+  DB_USER: "REPLACE_WITH_DATABASE_USER"
+  DB_PASSWORD_SECRET_ID: "residuolab-db-password"
+  DJANGO_SECRET_KEY_SECRET_ID: "residuolab-django-secret-key"
+  EMAIL_BACKEND: django.core.mail.backends.smtp.EmailBackend
+  EMAIL_HOST: "REPLACE_WITH_SMTP_HOST"
+  EMAIL_PORT: "587"
+  EMAIL_HOST_USER: "REPLACE_WITH_SMTP_USER"
+  EMAIL_HOST_PASSWORD_SECRET_ID: "residuolab-smtp-password"
+  EMAIL_USE_TLS: "true"
+  EMAIL_USE_SSL: "false"
+  DEFAULT_FROM_EMAIL: "REPLACE_WITH_VERIFIED_SENDER"
+  MEDIA_BUCKET_NAME: "REPLACE_WITH_MEDIA_BUCKET"
+
+beta_settings:
+  cloud_sql_instances: "REPLACE_WITH_PROJECT:REGION:INSTANCE"

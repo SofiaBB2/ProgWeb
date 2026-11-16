@@ -1,0 +1,24 @@
+{% extends "tasks/base.html" %}
+{% load static crispy_forms_tags %}
+{% block content %}
+
+<div class="login-container-principal">
+    <div class="rounded-5 login-sub-container-principal">
+        <form class="p-5" method="post" action="{% url 'recuperacao_senha' %}">
+            {% csrf_token %}
+            <h2 class="text-center mb-4">RECUPERAÇÃO DE ACESSO</h2>
+            <p>Informe o e-mail cadastrado. Ele é também seu identificador de acesso. Enviaremos esse identificador e um link temporário para redefinir sua senha.</p>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="status">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {{ form|crispy }}
+            <button type="reset" class="rounded-5 botao-limpar px-4">Limpar campos</button>
+            <button type="submit" class="btn rounded-5 botao-entrar">Enviar instruções</button>
+            <a href="{% url 'login' %}" class="btn btn-link">Voltar ao login</a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="login-container-principal">
+    <div class="rounded-5 login-sub-container-principal">
+        
+        <form class="p-5" method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h2 class="text-center mb-4">LOGIN</h2>
+            
+            <div class="mb-4">
+                <label for="campoEmail" class="form-label">Endereço de E-mail</label>
+                <input type="email" class="form-control" id="campoEmail" name="email" placeholder="seuemail@exemplo.com" required>
+            </div>
+        
+            <div class="mb-4">
+                <label for="campoSenha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="campoSenha" name="senha" placeholder="Sua senha" required>
+            </div>
+            
+            <a href="{% url 'recuperacao_senha' %}" class="btn rounded-5 botao-esqueceu-senha px-4 me-3">Esqueceu a senha ou o usuário?</a>
+            
+            <button type="reset" class="rounded-5 botao-limpar px-4">Limpar campos</button>
+            <button type="submit" class="rounded-5 botao-entrar">Entrar</button>
+        </form>
+    </div>
+</div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div id="dados-alerta" class="d-none" data-tipo="{{ message.tags }}" data-texto="{{ message }}"></div>
+    {% endfor %}
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- codigo para o pop up ficar bonito -->
+<script src="{% static 'tasks/js/pop-up-sucess.js' %}"></script>
+
+{% endblock content %}

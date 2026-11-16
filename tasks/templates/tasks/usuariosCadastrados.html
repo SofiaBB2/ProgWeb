@@ -1,0 +1,66 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+
+    <h2 class="fw-bold mb-4">USUÁRIOS CADASTRADOS:</h2>
+
+    <div class="d-flex justify-content-start gap-3 mb-4">
+        <button class="botao-filtrar">
+            <img src="{% static 'tasks/iconFilter.png' %}" alt="Filtrar" class="icon-btn">
+            FILTRAR
+        </button>
+        <button class="botao-ordenar">
+            <img src="{% static 'tasks/iconTransfer.png' %}" alt="Ordenar" class="icon-btn">
+            ORDENAR
+        </button>
+    </div>
+
+    <div class="input-group mb-4 barra-pesquisa">
+        <span class="input-group-text lupa-bg">
+            <img src="{% static 'tasks/search.png' %}" alt="Buscar" class="icon-lupa">
+        </span>
+        <input type="text" class="form-control campo-pesquisa" placeholder="Buscar usuários...">
+        <button class="btn botao-limpar-pesquisa" type="button">×</button>
+    </div>
+    
+    <p class="texto-resultados">RESULTADOS ENCONTRADOS:</p>
+    
+    <div class="lista-usuarios">
+        
+        <div class="card-usuario">
+    <div class="foto-usuario">
+        FOTO DO<br>USUÁRIO
+    </div>
+    <div class="info-usuario">
+        <div class="d-flex align-items-center campo-editavel">
+            <h5 class="fw-bold mb-0 me-2 texto-info">JOSÉ DE ALMEIDA CARVALHO</h5>
+            <a href="#" class="icone-editar-campo hidden">
+                <img src="{% static 'tasks/pencil.png' %}" alt="Editar">
+            </a>
+        </div>
+        <div class="d-flex align-items-center campo-editavel">
+            <p class="mb-0 texto-info"><strong>Email:</strong> institucional092090@gmail.com</p>
+            <a href="#" class="icone-editar-campo hidden ms-2">
+                <img src="{% static 'tasks/pencil.png' %}" alt="Editar">
+            </a>
+        </div>
+        <div class="d-flex align-items-center campo-editavel">
+            <p class="mb-0 texto-info"><strong>Formação:</strong> Engenharia Química - UFPR</p>
+            <a href="#" class="icone-editar-campo hidden ms-2">
+                <img src="{% static 'tasks/pencil.png' %}" alt="Editar">
+            </a>
+        </div>
+    </div>
+
+    <div class="acoes-usuario">
+        <div class="botoes-padrao">
+            <a href="{% url 'detalheUsuario' %}" class="btn botao-detalhar fw-bold">DETALHAR</a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock content %}

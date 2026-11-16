@@ -1,0 +1,74 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container my-5">
+
+    <h2 class="fw-bold mb-4">FRASCOS CADASTRADOS:</h2>
+
+    <div class="d-flex justify-content-start gap-3 mb-4">
+        <div class="dropdown-container">
+            <button class="botao-filtrar">
+                <img src="{% static 'tasks/iconFilter.png' %}" alt="Filtrar" class="icon-btn">
+                FILTRAR
+            </button>
+            <div id="dropdown-filtro" class="dropdown-content">
+                <h5>Filtrar Por:</h5>
+                <a href="#">Data de Criação</a>
+                <a href="#">Tipo de Resíduo</a>
+            </div>
+        </div>
+        
+        <div class="dropdown-container">
+            <button class="botao-ordenar">
+                <img src="{% static 'tasks/iconTransfer.png' %}" alt="Ordenar" class="icon-btn">
+                ORDENAR
+            </button>
+            <div id="dropdown-ordenar" class="dropdown-content">
+                <h5>Ordenar Por:</h5>
+                <a href="#">Mais Recentes</a>
+                <a href="#">Nome (A-Z)</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group mb-4 barra-pesquisa">
+    <span class="input-group-text lupa-bg">
+        <img src="{% static 'tasks/search.png' %}" alt="Buscar" class="icon-lupa">
+    </span>
+    <input type="text" class="form-control campo-pesquisa" id="campo-busca" placeholder="Buscar frascos...">
+    
+    <button class="btn botao-limpar-pesquisa" type="button" id="botao-limpar-busca">×</button>
+</div>
+    
+    <p class="texto-resultados">RESULTADOS ENCONTRADOS:</p>
+    
+    <div class="lista-frascos">
+    
+    {% for frasco in frascos %}
+    <div class="item-frascos-novo">
+        <div class="codigo-frascos-novo">{{ frasco.num }}</div>
+        <div class="info-frascos-novo">
+            <p><strong>Volume total:</strong> {{ frasco.vol_deposito }}L</p>
+            <p><strong>Volume ocupado:</strong> {{ frasco.vol_ocupado }}L</p>
+        </div>
+        <div class="info-frascos-novo">
+          <p><strong>Disponível: </strong>{{ frasco.percentual_disponivel_bruto }}L ({{ frasco.percentual_disponivel|floatformat:1 }})%</p>
+        </div>
+    </div>
+    {% empty %}
+        <p class="text-muted mt-3">Nenhum frasco cadastrado no sistema ainda.</p>
+    {% endfor %}
+
+</div>
+
+    <div class="text-end mt-4">
+        <a href="{% url 'cadastrar_frasco' %}" class="btn botao-cadastrar rounded-pill px-4 py-2">
+            Cadastrar Novo Frasco
+        </a>
+    </div>
+    </div>
+
+<script src="{% static 'tasks/filtros.js' %}"></script>
+
+{% endblock content %}

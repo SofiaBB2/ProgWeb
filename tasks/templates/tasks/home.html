@@ -1,0 +1,41 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="p-5 bg-white rounded-3 ">
+    
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold text-body-emphasis">BEM-VINDO!</h1>
+    </div>
+    
+    <div class="d-flex flex-column flex-md-row align-items-center">
+      
+      <img src="{% static 'tasks/R.jpg' %}" alt="Laboratório com resíduos" 
+          class="img-fluid rounded-3 ms-md-4 mb-4 mb-md-0 order-md-last" 
+          style="max-width: 350px;">
+      
+      <div class="flex-grow-1 fs-5">
+        <p class="lead mb-3 text-muted">
+          Em um mundo onde a ciência avança rapidamente, a responsabilidade com o descarte correto de resíduos químicos 
+          torna-se não apenas uma obrigação, mas um compromisso fundamental com a segurança e o meio ambiente.
+        </p>
+        <p class="mb-3 text-muted">
+          Nosso site é seu portal de informações essenciais e práticas sobre a gestão sustentável de resíduos químicos. 
+          Nossa missão é conscientizar, orientar e capacitar você sobre as melhores práticas para minimizar impactos
+          ambientais e garantir a segurança de todos.
+        </p>
+        <p class="mb-3 text-muted">
+          Explore nossos conteúdos abrangentes, descubra soluções inovadoras e sustentáveis, e junte-se a nós na 
+          construção de um futuro mais limpo e seguro.
+        </p>
+        <p class="fw-bold text-muted">
+          Juntos, podemos fazer a diferença – pela ciência, pela segurança e pelo nosso planeta!
+        </p>
+      </div>
+      
+    </div>
+    
+  </div>
+</div>
+{% endblock content %}

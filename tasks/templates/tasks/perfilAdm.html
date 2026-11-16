@@ -1,0 +1,28 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container text-center my-5 py-5">
+
+    <h1 class="display-4 fw-bold mb-5" style="color: #555;">
+        Bem vindo, XXXXX!
+    </h1>
+
+    <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
+        
+        <a href="{% url 'detalheUsuario' %}" class="btn btn-dashboard">
+            Consultar Dados<br>Pessoais
+        </a>
+
+        <a href="{% url 'usuariosCadastrados' %}" class="btn btn-dashboard">
+            Consultar Usuários
+        </a>
+
+        <a href="{% url 'cadastro_usuario' %}" class="btn btn-dashboard">
+            Cadastrar Usuários
+        </a>
+
+    </div>
+
+</div>
+{% endblock content %}
